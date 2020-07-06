@@ -6,8 +6,8 @@ def char_is_letter (alphabet, char)
     return alphabet.include? char.downcase
 end
 
-def is_upper?(c)
-    c != c.downcase
+def is_upper?(char)
+    return char != char.downcase
 end
 
 def shift_char (alphabet, char, number)
@@ -32,5 +32,6 @@ def caesar_cipher (string, number)
             char
         end
     end
+
     return result.join("")
 end
