@@ -24,7 +24,7 @@ def caesar_cipher (string, number)
             if is_upper?(char)
                 char = char.downcase
                 char = shift_char(alphabet, char, number)
-                char = char.upcase
+                char.upcase!
             else
                 char = shift_char(alphabet, char, number)
             end
