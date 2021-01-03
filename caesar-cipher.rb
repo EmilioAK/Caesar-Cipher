@@ -1,37 +1,19 @@
-def modulatedArray (array, index)
-    return array[index%array.length()]
+def modulated_offset(arr, char, offset)
+    arr[(arr.index(char) + offset) % arr.length]
 end
 
-def char_is_letter (alphabet, char)
-    return alphabet.include? char.downcase
-end
-
-def is_upper?(char)
-    return char != char.downcase
-end
-
-def shift_char (alphabet, char, number)
-    current_pos = alphabet.find_index(char)
-    return modulatedArray(alphabet, current_pos+number)
-end
-
-def caesar_cipher (string, number)
+def cyper_char(char, offset)
     alphabet = ("a".."z").to_a
-    string_to_array = string.split("")
     
-    result = string_to_array.map do |char|
-        if char_is_letter(alphabet, char)
-            if is_upper?(char)
-                char = char.downcase
-                char = shift_char(alphabet, char, number)
-                char.upcase!
-            else
-                char = shift_char(alphabet, char, number)
-            end
-        else
-            char
-        end
+    if alphabet.include?(char)
+        modulated_offset(alphabet, char, offset)
+    elsif alphabet.include?(char.downcase)
+        modulated_offset(alphabet, char.downcase, offset).upcase
+    else
+        char
     end
+end
 
-    return result.join("")
+def caesar_cipher (string, offset)
+    string.split("").map {|char| cyper_char(char, offset)}.join("")
 end
