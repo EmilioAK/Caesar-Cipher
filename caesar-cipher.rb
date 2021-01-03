@@ -15,5 +15,5 @@ def cyper_char(char, offset)
 end
 
 def caesar_cipher (string, offset)
-    string.split("").map {|char| cyper_char(char, offset)}.join("")
+    string.chars.map{|char| cyper_char(char, offset)}.join
 end
